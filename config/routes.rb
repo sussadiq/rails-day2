@@ -12,7 +12,15 @@ Rails.application.routes.draw do
 
   # Defines the root path route ("/")
   # root "posts#index"
+
+  resources :recipes, shallow: true do
+    collection do
+      get "my", to: "recipes#my"
+    end
+    member do
+      get "search"
+    end
+  end
   root "recipes#index"
-  resources :recipes
 end
 
